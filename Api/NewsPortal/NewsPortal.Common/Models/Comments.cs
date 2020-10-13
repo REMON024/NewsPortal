@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NewsPortal.Context.Models
+namespace NewsPortal.Common.Models
 {
-    public class Rating
+    public class Comments
     {
         public int ID { get; set; }
-        public float Point { get; set; }
+        public string Comment { get; set; }
         public int? UserID { get; set; }
         public virtual User User { get; set; }
         public int? FeedID { get; set; }

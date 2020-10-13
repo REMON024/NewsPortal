@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NewsPortal.Context.Models;
+using NewsPortal.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

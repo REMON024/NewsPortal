@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NewsPortal.Context.Models
+namespace NewsPortal.Common.Models
 {
-    public class Category
+    public class UserRoll
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Feed> Feeds { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
+
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NewsPortal.Context.Models
+namespace NewsPortal.Common.Models
 {
     public class Feed
     {

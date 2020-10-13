@@ -10,6 +10,10 @@
 /Api/NewsPortal/NewsPortal.Context/obj
 /Api/NewsPortal/NewsPortal/obj
 /Api/NewsPortal/NewsPortal.Common/obj
+/Api/NewsPortal/NewPortal.BLL/bin
+/Api/NewsPortal/NewsPortal.Context/bin
+/Api/NewsPortal/NewsPortal/bin
+/Api/NewsPortal/NewsPortal.Common/bin
 # dependencies
 /node_modules
 
