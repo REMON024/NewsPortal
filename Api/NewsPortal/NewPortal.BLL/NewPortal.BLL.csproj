@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NewsPortal.Common\NewsPortal.Common.csproj" />
+    <ProjectReference Include="..\NewsPortal.Context\NewsPortal.Context.csproj" />
+  </ItemGroup>
+
 </Project>
