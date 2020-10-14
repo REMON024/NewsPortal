@@ -43,8 +43,16 @@ namespace NewsPortal
             services.AddScoped<IUserService, UserService>();
 
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader()
+                      .AllowCredentials()
+                .Build());
+            });
 
-           
 
         }
 
@@ -60,6 +68,7 @@ namespace NewsPortal
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseCors("CorsPolicy");
 
 
 

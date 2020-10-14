@@ -1,0 +1,25 @@
+<div class="container">
+
+
+<table class="table" style="background-color: cornsilk;">
+    <thead>
+        <th>Name</th>
+        <th>User</th>
+        <th>Phone No</th>
+        <th>Email</th>
+        <th>Status</th>
+        <!-- <th style="width:10%;"> Action</th> -->
+    </thead>
+    <tbody *ngFor="let user of lstuser">
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.phone_No}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.status}}</td>
+        <!-- <td style="width:10%;">
+            <a title="Edit" (click)="editDriver(req)"><i class="fa fa-edit"></i></a>
+            <a title="Delete" (click)="DeleteDriver(req)"> <i style="color:red" class="fa fa-trash"></i></a>
+        </td> -->
+    </tbody>
+</table>
+</div>

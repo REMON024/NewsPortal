@@ -35,5 +35,20 @@ namespace NewsPortal.Controllers
 
         }
 
+        [HttpGet("GetAllUser")]
+        public async Task<ActionResult> GetAllUser()
+        {
+            try
+            {
+                return Ok(await _userService.GetAllUser());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
     }
 }

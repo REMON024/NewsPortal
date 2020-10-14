@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "NewsPortal-Client"
+    }
+  },
+  "defaultProject": "NewsPortal-Client",
+  "cli": {
+    "analytics": "37ce582d-0e9a-448c-a23d-0fa51bd74d9a"
+  }
 }

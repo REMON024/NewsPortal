@@ -1,0 +1,37 @@
+<div class="container">
+    <h1 class="well">Registration Form</h1>
+	<div class="col-lg-12 well">
+	<div class="row">
+
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Name</label>
+								<input  type="text" name="name" [(ngModel)]="usermodel.Name" placeholder="Enter First Name Here.." class="form-control" >
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>User Name</label>
+								<input  type="text" name="username" [(ngModel)]="usermodel.Username" placeholder="Enter Last Name Here.." class="form-control">
+							</div>
+						</div>						
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>Password</label>
+								<input  type="text" name="password" [(ngModel)]="usermodel.Password" placeholder="Enter City Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>Phone No</label>
+								<input type="text" name="phoneno" [(ngModel)]="usermodel.Phone_No" placeholder="Enter State Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>Email</label>
+								<input type="text" name="Email" [(ngModel)]="usermodel.Email" placeholder="Enter Zip Code Here.." class="form-control">
+							</div>		
+						</div>
+						
+					<button type="button" (click)="SaveUser()" class="btn btn-lg btn-info">Submit</button>					
+					</div>
+
+				</div>
+	</div>
+	</div>

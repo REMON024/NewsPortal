@@ -10,7 +10,7 @@ namespace NewsPortal.Common.Models
         public string Name { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public int Phone_No { get; set; }
+        public string Phone_No { get; set; }
         public string  Email { get; set; }
         public bool status { get; set; }
         public int? UserRollID { get; set; }

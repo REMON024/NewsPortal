@@ -9,5 +9,6 @@ namespace NewPortal.BLL.Interface
     public interface IUserService
     {
         Task<bool> AddUser(User user);
+        Task<List<User>> GetAllUser();
     }
 }

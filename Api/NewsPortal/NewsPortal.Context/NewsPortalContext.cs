@@ -18,5 +18,17 @@ namespace NewsPortal.Context
         public DbSet<Feed>  Feeds { get; set; }
         public DbSet<Rating>  Ratings { get; set; }
         public DbSet<Comments>  Comments { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+
+            #region Benefits
+            modelBuilder.Entity<UserRoll>().HasData(
+                new UserRoll { ID = 2, Name = "Reader"},
+                new UserRoll { ID = 1, Name = "Admin"}
+                );
+            #endregion
+
+        }
     }
 }

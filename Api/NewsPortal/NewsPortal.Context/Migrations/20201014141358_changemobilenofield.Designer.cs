@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewsPortal.Context;
 
 namespace NewsPortal.Context.Migrations
 {
     [DbContext(typeof(NewsPortalContext))]
-    partial class NewsPortalContextModelSnapshot : ModelSnapshot
+    [Migration("20201014141358_changemobilenofield")]
+    partial class changemobilenofield
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,18 +137,6 @@ namespace NewsPortal.Context.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("UserRolls");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 2,
-                            Name = "Reader"
-                        },
-                        new
-                        {
-                            ID = 1,
-                            Name = "Admin"
-                        });
                 });
 
             modelBuilder.Entity("NewsPortal.Common.Models.Comments", b =>
