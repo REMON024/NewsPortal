@@ -9,7 +9,7 @@ namespace NewPortal.BLL.Interface
 {
     public interface IAuthService
     {
-        Task<User> Login(Login login);
+        Task<LoginReturn> Login(Login login);
         //Task<List<User>> GetAllUser();
         //Task<User> GetById(int id);
         //Task<bool> UpdateUser(User user);

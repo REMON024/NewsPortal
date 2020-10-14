@@ -1,4 +1,5 @@
 ﻿using NewPortal.BLL.Interface;
+using NewsPortal.Common.Library.Encryption;
 using NewsPortal.Common.Models;
 using NewsPortal.Context;
 using System;
@@ -24,7 +25,7 @@ namespace NewPortal.BLL.Service
 
             user.status = true;
             user.UserRollID = 2;
-
+            user.Password = EncryptionLibrary.EncryptText(user.Password);
             await _db.SystemUsers.AddAsync(user);
             var res = await _db.SaveChangesAsync();
             if (res > 0)
