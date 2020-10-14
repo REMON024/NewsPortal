@@ -7,10 +7,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthService } from 'src/app/Service/auth/authservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
-  declarations: [AuthComponent,RegistrationComponent],
+  declarations: [AuthComponent,RegistrationComponent,LoginComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

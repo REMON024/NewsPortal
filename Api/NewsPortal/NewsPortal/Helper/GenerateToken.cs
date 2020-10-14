@@ -23,16 +23,27 @@ namespace NewsPortal.Helper
 
         public async Task<LoginReturn> BuildToken(LoginReturn loginReturn)
         {
-            
+
+            string UserName = "UserName";
+            string id = "UserId";
+
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                                        new Claim(ClaimTypes.Name, loginReturn.UserId.ToString(),loginReturn.Email,loginReturn.Role,loginReturn.UserName)
+                                        new Claim(id, loginReturn.UserId.ToString()),
+                                        new Claim(UserName, loginReturn.UserName.ToString()),
+                                        new Claim(ClaimTypes.Email, loginReturn.Email.ToString()),
+                                        new Claim(ClaimTypes.Role, loginReturn.Role.ToString()),
+                                        new Claim(ClaimTypes.Name, loginReturn.Name.ToString()),
+                
+                
+                
                 }),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };
