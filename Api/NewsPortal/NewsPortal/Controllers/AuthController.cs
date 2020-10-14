@@ -24,8 +24,9 @@ namespace NewsPortal.Controllers
 
 
         [HttpPost("Login")]
-        public async Task<ActionResult> Login(Login login)
+        public async Task<ActionResult> Login([FromBody] ApiCommonMessage requestMessage)
         {
+            Login login = requestMessage.GetRequestObject<Login>();
             LoginReturn loginReturn = new LoginReturn();
             try
             {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../../Model/Auth/regitrstion';
 import { AuthService } from '../../../Service/auth/authservice.service';
 
@@ -11,7 +12,7 @@ import { AuthService } from '../../../Service/auth/authservice.service';
 })
 export class RegistrationComponent implements OnInit {
 public usermodel:User=new User();
-  constructor(private authservice:AuthService) { }
+  constructor(private authservice:AuthService,private _Route: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,8 @@ public usermodel:User=new User();
   SaveUser(){
     this.authservice.AddUser(this.usermodel).subscribe(res=>{
       console.log(res);
+      this._Route.navigate(['auth/login']);
+
     })
   }
 

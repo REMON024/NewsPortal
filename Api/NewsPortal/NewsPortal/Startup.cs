@@ -23,6 +23,8 @@ using NewPortal.BLL.Service;
 using Swashbuckle.AspNetCore.Swagger;
 using NewsPortal.Common.VM;
 using NewsPortal.Helper;
+using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace NewsPortal
 {
@@ -38,7 +40,12 @@ namespace NewsPortal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver
+                    = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            }); 
             services.AddDbContext<NewsPortalContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -65,11 +72,18 @@ namespace NewsPortal
                     };
                 });
 
+            services.AddAuthorization(options =>
+            {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build();
+            });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IGenerateToken, GenerateToken>();
-
+           
 
             services.AddCors(options =>
             {

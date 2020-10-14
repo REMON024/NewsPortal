@@ -18,41 +18,41 @@ export class LoginComponent implements OnInit {
 
   onSubmit() 
   {
-      this.authservice.LoginUser(this.login).subscribe(
-          response => 
-          {     console.log(response,"Login Response")
-              // if (response.Token == null && response.Usertype == "0") 
-              // {
-              //     let config = new MatSnackBarConfig();
-              //     config.duration = this.setAutoHide ? this.autoHide : 0;
-              //     config.verticalPosition = this.verticalPosition;
+      this.authservice.LoginUser(this.login);
+          // response => 
+          // {     console.log(response,"Login Response")
+          //     // if (response.Token == null && response.Usertype == "0") 
+          //     // {
+          //     //     let config = new MatSnackBarConfig();
+          //     //     config.duration = this.setAutoHide ? this.autoHide : 0;
+          //     //     config.verticalPosition = this.verticalPosition;
                 
-              //     this.snackBar.open("Invalid Username and Password", this.action ? this.actionButtonLabel : undefined, config);
+          //     //     this.snackBar.open("Invalid Username and Password", this.action ? this.actionButtonLabel : undefined, config);
 
-              //     this._Route.navigate(['Login']);
-              // }
+          //     //     this._Route.navigate(['Login']);
+          //     // }
 
-              // if (response.Usertype == "1") 
-              // {
-              //     let config = new MatSnackBarConfig();
-              //     config.duration = this.setAutoHide ? this.autoHide : 0;
-              //     config.verticalPosition = this.verticalPosition;
+          //     // if (response.Usertype == "1") 
+          //     // {
+          //     //     let config = new MatSnackBarConfig();
+          //     //     config.duration = this.setAutoHide ? this.autoHide : 0;
+          //     //     config.verticalPosition = this.verticalPosition;
                 
-              //     this.snackBar.open("Logged in Successfully", this.action ? this.actionButtonLabel : undefined, config);
+          //     //     this.snackBar.open("Logged in Successfully", this.action ? this.actionButtonLabel : undefined, config);
 
-              //     this._Route.navigate(['/Admin/Dashboard']);
-              // }
+          //     //     this._Route.navigate(['/Admin/Dashboard']);
+          //     // }
 
-              // if (response.Usertype == "2") 
-              // {
-              //     let config = new MatSnackBarConfig();
-              //     config.duration = this.setAutoHide ? this.autoHide : 0;
-              //     config.verticalPosition = this.verticalPosition;
+          //     // if (response.Usertype == "2") 
+          //     // {
+          //     //     let config = new MatSnackBarConfig();
+          //     //     config.duration = this.setAutoHide ? this.autoHide : 0;
+          //     //     config.verticalPosition = this.verticalPosition;
                 
-              //     this.snackBar.open("Logged in Successfully", this.action ? this.actionButtonLabel : undefined, config);
-              //     this._Route.navigate(['/User/Dashboard']);
-              // }
-          });
+          //     //     this.snackBar.open("Logged in Successfully", this.action ? this.actionButtonLabel : undefined, config);
+          //     //     this._Route.navigate(['/User/Dashboard']);
+          //     // }
+          // });
 
   }
 
