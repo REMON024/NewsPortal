@@ -21,6 +21,8 @@ using NewsPortal.Context;
 using NewPortal.BLL.Interface;
 using NewPortal.BLL.Service;
 using Swashbuckle.AspNetCore.Swagger;
+using NewsPortal.Common.VM;
+using NewsPortal.Helper;
 
 namespace NewsPortal
 {
@@ -39,9 +41,34 @@ namespace NewsPortal
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<NewsPortalContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IGenerateToken, GenerateToken>();
 
 
             services.AddCors(options =>
@@ -72,6 +99,7 @@ namespace NewsPortal
             app.UseCors("CorsPolicy");
 
 
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseMvc();
