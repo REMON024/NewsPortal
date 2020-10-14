@@ -9,23 +9,23 @@ using NewsPortal.Common.Models;
 
 namespace NewsPortal.Controllers
 {
-    [Route("api/User")]
+    [Route("api/Category")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly ICategoryService _categoryService;
 
-        public UserController(IUserService userService)
+        public CategoryController(ICategoryService categoryService)
         {
-            _userService = userService;
+            _categoryService = categoryService;
         }
 
-        [HttpPost("AddUser")]
-        public async Task<ActionResult> AddUser( User user)
+        [HttpPost("AddCategory")]
+        public async Task<ActionResult> AddCategory(Category category)
         {
             try
             {
-                return Ok(await _userService.AddUser(user));
+                return Ok(await _categoryService.AddCategory(category));
             }
             catch (Exception ex)
             {
@@ -35,12 +35,12 @@ namespace NewsPortal.Controllers
 
         }
 
-        [HttpPost("UpdateUser")]
-        public async Task<ActionResult> UpdateUser(User user)
+        [HttpPost("UpdateCategory")]
+        public async Task<ActionResult> UpdateCategory(Category category)
         {
             try
             {
-                return Ok(await _userService.UpdateUser(user));
+                return Ok(await _categoryService.UpdateCategory(category));
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace NewsPortal.Controllers
         {
             try
             {
-                return Ok(await _userService.GetById(id));
+                return Ok(await _categoryService.GetById(id));
             }
             catch (Exception ex)
             {
@@ -70,7 +70,7 @@ namespace NewsPortal.Controllers
         {
             try
             {
-                return Ok(await _userService.Delete(id));
+                return Ok(await _categoryService.Delete(id));
             }
             catch (Exception ex)
             {
@@ -82,12 +82,12 @@ namespace NewsPortal.Controllers
 
 
 
-        [HttpGet("GetAllUser")]
-        public async Task<ActionResult> GetAllUser()
+        [HttpGet("GetAllCategory")]
+        public async Task<ActionResult> GetAllCategory()
         {
             try
             {
-                return Ok(await _userService.GetAllUser());
+                return Ok(await _categoryService.GetAllCategory());
             }
             catch (Exception ex)
             {

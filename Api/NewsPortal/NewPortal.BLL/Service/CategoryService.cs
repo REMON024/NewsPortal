@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace NewPortal.BLL.Service
 {
-    public class UserService : IUserService
+    public class CategoryService : ICategoryService
     {
         private readonly NewsPortalContext _db;
 
-        public UserService(NewsPortalContext db)
+        public CategoryService(NewsPortalContext db)
         {
             _db = db;
         }
 
-        public async Task<bool> AddUser(User user)
+        public async Task<bool> AddCategory(Category category)
         {
             bool result = false;
 
-            user.status = true;
-            user.UserRollID = 2;
+            //user.status = true;
+            //user.UserRollID = 2;
 
-            await _db.SystemUsers.AddAsync(user);
+            await _db.Categories.AddAsync(category);
             var res = await _db.SaveChangesAsync();
             if (res > 0)
             {
@@ -38,8 +38,8 @@ namespace NewPortal.BLL.Service
         public async Task<bool> Delete(int id)
         {
             bool result = false;
-            var user = _db.SystemUsers.Where(p => p.ID == id).FirstOrDefault();
-            _db.SystemUsers.Remove(user);
+            var category = _db.Categories.Where(p => p.ID == id).FirstOrDefault();
+            _db.Categories.Remove(category);
             var res =await _db.SaveChangesAsync();
             if (res > 0)
             {
@@ -48,26 +48,26 @@ namespace NewPortal.BLL.Service
             return result;
         }
 
-        public async Task<List<User>> GetAllUser()
+        public async Task<List<Category>> GetAllCategory()
         {
-          return  _db.SystemUsers.ToList();
+          return  _db.Categories.ToList();
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<Category> GetById(int id)
         {
-            var user =  _db.SystemUsers.Where(p => p.ID == id).FirstOrDefault();
-            if (user != null)
+            var category =  _db.Categories.Where(p => p.ID == id).FirstOrDefault();
+            if (category != null)
             {
-                return user;
+                return category;
             }
 
-            throw new Exception("User Not Found");
+            throw new Exception("Category Not Found");
         }
 
-        public async Task<bool> UpdateUser(User user)
+        public async Task<bool> UpdateCategory(Category category)
         {
             bool result = false;
-            _db.SystemUsers.Update(user);
+            _db.Categories.Update(category);
             var res = await _db.SaveChangesAsync();
 
             if (res > 0)

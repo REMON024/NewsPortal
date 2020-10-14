@@ -41,6 +41,7 @@ namespace NewsPortal
 
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
 
             services.AddCors(options =>
