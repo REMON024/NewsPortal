@@ -44,6 +44,7 @@ import { LayoutComponent } from './NewsPortal/Component/Layout';
 import { HTTPInterceptorProviders } from './NewsPortal/service/interceptor/interceptor';
 import { AuthService } from './NewsPortal/service/auth/authservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule

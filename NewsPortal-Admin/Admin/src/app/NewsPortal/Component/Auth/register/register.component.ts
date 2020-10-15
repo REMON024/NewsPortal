@@ -14,7 +14,7 @@ export class RegisterComponent {
   SaveUser(){
     this.authservice.AddUser(this.usermodel).subscribe(res=>{
       console.log(res);
-      this._Route.navigate(['auth/login']);
+      this._Route.navigate(['login']);
 
     })
   }

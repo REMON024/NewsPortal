@@ -36,7 +36,7 @@ namespace NewsPortal.Controllers
             catch (Exception ex)
             {
                 loginReturn.Message = "Fail";
-                return BadRequest(ex.Message);
+                return BadRequest(loginReturn);
             }
 
         }

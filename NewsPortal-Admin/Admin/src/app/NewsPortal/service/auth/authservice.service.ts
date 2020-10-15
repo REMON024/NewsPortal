@@ -27,7 +27,7 @@ export class AuthService {
     return this.http.post(this.addUser, user);
   }
 
-  public LoginUser(login: Login) {
+  public LoginUser(login: any) {
 
     const body = {
       Username: login.Username,
@@ -57,6 +57,7 @@ export class AuthService {
     this.tokenservice.RemoveToken();
     // this.userIdleService.stopWatching();
     this.route.navigate(['/login']);
+
   }
 
 
@@ -101,7 +102,7 @@ export class AuthService {
 
   getLoggedAccessRight() {
     if (this.tokenservice.GetToken()) {
-      return this.tokenservice.GetTokenValue("Role");
+      return this.tokenservice.GetTokenValue("role");
     }
     return '';
   }

@@ -1,0 +1,29 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <strong>Role</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" [(ngModel)]="category.Name" placeholder="Enter Category name">
+                </div>
+              </div>
+            </div><!--/.row-->
+
+            <div class="row">
+<button type="submit" (click)="Submit()">Save</button>
+            </div><!--/.row-->
+          </div>
+        </div>
+      </div><!--/.col-->
+
+    </div><!--/.row-->
+
+  </div>
+  

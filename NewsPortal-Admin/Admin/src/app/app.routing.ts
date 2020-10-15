@@ -74,6 +74,14 @@ export const routes: Routes = [
         loadChildren: () => import('../app/NewsPortal/Module/role/role.module').then(m => m.RoleModule)
       },
       {
+        path: 'category',
+        loadChildren: () => import('../app/NewsPortal/Module/category/category.module').then(m => m.CategoryModule)
+      },
+      {
+        path: 'Feed',
+        loadChildren: () => import('../app/NewsPortal/Module/feed/feed.module').then(m => m.FeedModule)
+      },
+      {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },

@@ -36,6 +36,7 @@ export class TokenService {
 
   public GetTokenValue(key: string): string {
     const decodeObj = this.DecodeToken();
+    console.log(decodeObj);
     return decodeObj[key];
   }
 }
