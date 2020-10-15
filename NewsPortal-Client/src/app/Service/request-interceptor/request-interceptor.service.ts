@@ -26,6 +26,8 @@ export class RequestInterceptorService {
       new ApiCommonMessage(this.auth.getLoggedUsername(),
         this.token.GetToken(),req.body);
 
+        console.log(requestMessage);
+
     const customReq = req.clone({
       body: requestMessage,
       url: this.prepareUrl(req.url),

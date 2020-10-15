@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() 
   {
-      this.authservice.LoginUser(this.login);
+      this.authservice.LoginUser(this.login).subscribe(res=>{
+        
+      });
           // response => 
           // {     console.log(response,"Login Response")
           //     // if (response.Token == null && response.Usertype == "0") 

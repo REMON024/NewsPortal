@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Login } from '../../Model/Auth/login';
 import { TokenService } from '../../Service/token/token.service';
 import { Router } from '@angular/router';
-
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -34,10 +34,10 @@ export class AuthService {
       Password: login.Password
     };
 
-    return this.http.post(this.loginUser, body).subscribe((res: any) => {
-      this.tokenservice.SaveToken(res.token);
+    return this.http.post(this.loginUser, body).pipe(map((res: any) => {
+      this.tokenservice.SaveToken(res.Token);
       // this.userIdleService.startWatching();
-    });
+    }));
   }
 
   public GetAllUser() {

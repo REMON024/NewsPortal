@@ -83,13 +83,13 @@ namespace NewsPortal.Controllers
         }
 
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("GetAllUser")]
         public async Task<ActionResult> GetAllUser()
         {
             try
             {
-                return Ok(await _userService.GetAllUser());
+                return new OkObjectResult(await _userService.GetAllUser());
             }
             catch (Exception ex)
             {
