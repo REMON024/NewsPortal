@@ -3,18 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
+import { LayoutComponent } from './NewsPortal/Component/Layout';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { LoginComponent } from '../app/NewsPortal/Component/Auth/login/login.component';
+import { RegisterComponent } from '../app/NewsPortal/Component/Auth/register/register.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'dashboard',
+  //   pathMatch: 'full',
+  // },
   {
     path: '404',
     component: P404Component,
@@ -29,27 +30,49 @@ export const routes: Routes = [
       title: 'Page 500'
     }
   },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
-  },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent,
+  //   data: {
+  //     title: 'Login Page'
+  //   }
+  // },
+  // {
+  //   path: 'register',
+  //   component: RegisterComponent,
+  //   data: {
+  //     title: 'Register Page'
+  //   }
+  // },
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: LayoutComponent,
     data: {
       title: 'Home'
     },
     children: [
+      {
+        path: 'register',
+        component: RegisterComponent,
+        data: {
+          title: 'Register Page'
+        }
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: {
+          title: 'Login Page'
+        }
+      },
+      {
+        path: 'user',
+        loadChildren: () => import('../app/NewsPortal/Module/user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'role',
+        loadChildren: () => import('../app/NewsPortal/Module/role/role.module').then(m => m.RoleModule)
+      },
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)

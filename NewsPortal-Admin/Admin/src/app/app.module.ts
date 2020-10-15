@@ -14,15 +14,15 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { AppComponent } from './app.component';
 
 // Import containers
-import { DefaultLayoutComponent } from './containers';
+// import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { LoginComponent } from '../app/NewsPortal/Component/Auth/login/login.component';
+import { RegisterComponent } from '../app/NewsPortal/Component/Auth/register/register.component';
 
 const APP_CONTAINERS = [
-  DefaultLayoutComponent
+  LayoutComponent
 ];
 
 import {
@@ -40,12 +40,17 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { LayoutComponent } from './NewsPortal/Component/Layout';
+import { HTTPInterceptorProviders } from './NewsPortal/service/interceptor/interceptor';
+import { AuthService } from './NewsPortal/service/auth/authservice.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
@@ -62,11 +67,12 @@ import { ChartsModule } from 'ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LayoutComponent
   ],
-  providers: [{
+  providers: [HTTPInterceptorProviders,AuthService,{
     provide: LocationStrategy,
-    useClass: HashLocationStrategy
+    useClass: HashLocationStrategy,
   }],
   bootstrap: [ AppComponent ]
 })
