@@ -10,38 +10,32 @@ using System.Threading.Tasks;
 
 namespace NewPortal.BLL.Service
 {
-    public class UserService : IUserService
+    public class RatingService : IRatingService
     {
         private readonly NewsPortalContext _db;
-
-        public UserService(NewsPortalContext db)
+        public RatingService(NewsPortalContext db)
         {
             _db = db;
-        }
 
-        public async Task<bool> AddUser(User user)
+        }
+        public async Task<bool> AddRating(Rating rating)
         {
             bool result = false;
-
-            user.status = true;
-            user.UserRollID = 2;
-
-            await _db.SystemUsers.AddAsync(user);
+            await _db.Ratings.AddAsync(rating);
             var res = await _db.SaveChangesAsync();
             if (res > 0)
             {
                 result = true;
             }
-
             return result;
         }
 
         public async Task<bool> Delete(int id)
         {
             bool result = false;
-            var user = await _db.SystemUsers.Where(p => p.ID == id).FirstOrDefaultAsync();
-            _db.SystemUsers.Remove(user);
-            var res =await _db.SaveChangesAsync();
+            var rating = await _db.Ratings.Where(p => p.ID == id).FirstOrDefaultAsync();
+            _db.Ratings.Remove(rating);
+            var res = await _db.SaveChangesAsync();
             if (res > 0)
             {
                 result = true;
@@ -49,28 +43,26 @@ namespace NewPortal.BLL.Service
             return result;
         }
 
-        public async Task<List<User>> GetAllUser()
+        public async Task<List<Rating>> GetAllRating()
         {
-          return await _db.SystemUsers.ToListAsync();
+            return await _db.Ratings.ToListAsync();
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<Rating> GetById(int id)
         {
-            var user = await _db.SystemUsers.Where(p => p.ID == id).FirstOrDefaultAsync();
-            if (user != null)
+            var rating = await _db.Ratings.Where(p => p.ID == id).FirstOrDefaultAsync();
+            if (rating != null)
             {
-                return user;
+                return rating;
             }
-
-            throw new Exception("User Not Found");
+            throw new Exception("Feed Not Found");
         }
 
-        public async Task<bool> UpdateUser(User user)
+        public async Task<bool> UpdateRating(Rating rating)
         {
-            bool result = false;
-            _db.SystemUsers.Update(user);
+            var result = false;
+            _db.Ratings.Update(rating);
             var res = await _db.SaveChangesAsync();
-
             if (res > 0)
             {
                 result = true;
@@ -79,3 +71,4 @@ namespace NewPortal.BLL.Service
         }
     }
 }
+

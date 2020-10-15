@@ -1,4 +1,5 @@
-﻿using NewPortal.BLL.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using NewPortal.BLL.Interface;
 using NewsPortal.Common.Models;
 using NewsPortal.Common.VM;
 using NewsPortal.Context;
@@ -22,7 +23,7 @@ namespace NewPortal.BLL.Service
         public async Task<User> Login(Login login)
         {
             string password = "";
-            var user = _db.SystemUsers.Where(p => p.Username == login.UserName && p.Password == password && p.status==true).Select(c => new User()
+            var user = await _db.SystemUsers.Where(p => p.Username == login.UserName && p.Password == password && p.status==true).Select(c => new User()
             {
                 Name=c.Name,
                 Email=c.Email,
@@ -33,7 +34,7 @@ namespace NewPortal.BLL.Service
                 UserRoll=c.UserRoll,
                 UserRollID=c.UserRollID
 
-            }).FirstOrDefault();
+            }).FirstOrDefaultAsync();
 
             if (user != null)
             {

@@ -1,4 +1,5 @@
-﻿using NewPortal.BLL.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using NewPortal.BLL.Interface;
 using NewsPortal.Common.Models;
 using NewsPortal.Context;
 using System;
@@ -38,7 +39,7 @@ namespace NewPortal.BLL.Service
         public async Task<bool> Delete(int id)
         {
             bool result = false;
-            var category = _db.Categories.Where(p => p.ID == id).FirstOrDefault();
+            var category = await _db.Categories.Where(p => p.ID == id).FirstOrDefaultAsync();
             _db.Categories.Remove(category);
             var res =await _db.SaveChangesAsync();
             if (res > 0)
@@ -50,12 +51,12 @@ namespace NewPortal.BLL.Service
 
         public async Task<List<Category>> GetAllCategory()
         {
-          return  _db.Categories.ToList();
+          return await _db.Categories.ToListAsync();
         }
 
         public async Task<Category> GetById(int id)
         {
-            var category =  _db.Categories.Where(p => p.ID == id).FirstOrDefault();
+            var category =  await _db.Categories.Where(p => p.ID == id).FirstOrDefaultAsync();
             if (category != null)
             {
                 return category;

@@ -10,38 +10,35 @@ using System.Threading.Tasks;
 
 namespace NewPortal.BLL.Service
 {
-    public class UserService : IUserService
-    {
-        private readonly NewsPortalContext _db;
 
-        public UserService(NewsPortalContext db)
+
+    public class CommentService : ICommentService
+    {
+
+        private readonly NewsPortalContext _db;
+        public CommentService(NewsPortalContext db)
         {
             _db = db;
-        }
 
-        public async Task<bool> AddUser(User user)
+        }
+        public async Task<bool> AddComments(Comments comments)
         {
             bool result = false;
-
-            user.status = true;
-            user.UserRollID = 2;
-
-            await _db.SystemUsers.AddAsync(user);
+            await _db.Comments.AddAsync(comments);
             var res = await _db.SaveChangesAsync();
             if (res > 0)
             {
                 result = true;
             }
-
             return result;
         }
 
         public async Task<bool> Delete(int id)
         {
             bool result = false;
-            var user = await _db.SystemUsers.Where(p => p.ID == id).FirstOrDefaultAsync();
-            _db.SystemUsers.Remove(user);
-            var res =await _db.SaveChangesAsync();
+            var comment = await _db.Comments.Where(p => p.ID == id).FirstOrDefaultAsync();
+            _db.Comments.Remove(comment);
+            var res = await _db.SaveChangesAsync();
             if (res > 0)
             {
                 result = true;
@@ -49,28 +46,26 @@ namespace NewPortal.BLL.Service
             return result;
         }
 
-        public async Task<List<User>> GetAllUser()
+        public async Task<List<Comments>> GetAllComments()
         {
-          return await _db.SystemUsers.ToListAsync();
+            return await _db.Comments.ToListAsync();
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<Comments> GetCommentsbyID(int id)
         {
-            var user = await _db.SystemUsers.Where(p => p.ID == id).FirstOrDefaultAsync();
-            if (user != null)
+            var comment = await _db.Comments.Where(p => p.ID == id).FirstOrDefaultAsync();
+            if (comment != null)
             {
-                return user;
+                return comment;
             }
-
-            throw new Exception("User Not Found");
+            throw new Exception("Feed Not Found");
         }
 
-        public async Task<bool> UpdateUser(User user)
+        public async Task<bool> UpdateComments(Comments comments)
         {
-            bool result = false;
-            _db.SystemUsers.Update(user);
+            var result = false;
+            _db.Comments.Update(comments);
             var res = await _db.SaveChangesAsync();
-
             if (res > 0)
             {
                 result = true;
