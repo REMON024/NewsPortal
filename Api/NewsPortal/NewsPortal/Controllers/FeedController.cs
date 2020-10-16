@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NewPortal.BLL.Interface;
 using NewsPortal.Common.Models;
+using NewsPortal.Common.VM;
 
 namespace NewsPortal.Controllers
 {
-    [Route("api/feed]")]
+    [Route("api/Feed")]
     [ApiController]
     public class FeedController : ControllerBase
     {
@@ -21,10 +22,11 @@ namespace NewsPortal.Controllers
         }
 
         [HttpPost("AddFeed")]
-        public async Task<ActionResult> AddFeed(Feed feed)
+        public async Task<ActionResult> AddFeed(ApiCommonMessage requestMessage)
         {
             try
             {
+                Feed feed = requestMessage.GetRequestObject<Feed>();
                 return Ok(await _feedService.AddFeed(feed));
             }
             catch (Exception ex)
@@ -96,5 +98,6 @@ namespace NewsPortal.Controllers
             }
 
         }
+
     }
 }

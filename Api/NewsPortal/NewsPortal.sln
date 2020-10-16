@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{04C400E3-7CA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{78A47BB2-5903-4396-8914-0F6871DFEEBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPortal.BLL", "NewPortal.BLL\NewPortal.BLL.csproj", "{180A444F-CB1F-4532-83B8-406009CD75B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewPortal.BLL", "NewPortal.BLL\NewPortal.BLL.csproj", "{180A444F-CB1F-4532-83B8-406009CD75B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsPortal.Common", "NewsPortal.Common\NewsPortal.Common.csproj", "{52700B86-D79F-4F39-BA28-89A50D1EDF46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Common", "NewsPortal.Common\NewsPortal.Common.csproj", "{52700B86-D79F-4F39-BA28-89A50D1EDF46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsPortal.Context", "NewsPortal.Context\NewsPortal.Context.csproj", "{0354FEC6-AB7A-4D62-B93E-E309060FC705}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPortal.Context", "NewsPortal.Context\NewsPortal.Context.csproj", "{0354FEC6-AB7A-4D62-B93E-E309060FC705}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

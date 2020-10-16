@@ -8,9 +8,9 @@ namespace NewsPortal.Common.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
-        public int Description { get; set; }
+        public string Description { get; set; }
         public int Status { get; set; }
-        public int isHeadline { get; set; }
+        public bool isHeadline { get; set; }
         public int? CategoryID { get; set; }
         public virtual Category Category { get; set; }
 

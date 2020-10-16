@@ -61,13 +61,13 @@ namespace NewsPortal.Context.Migrations
 
                     b.Property<int?>("CategoryID");
 
-                    b.Property<int>("Description");
+                    b.Property<string>("Description");
 
                     b.Property<int>("Status");
 
                     b.Property<string>("Title");
 
-                    b.Property<int>("isHeadline");
+                    b.Property<bool>("isHeadline");
 
                     b.HasKey("ID");
 
@@ -111,7 +111,7 @@ namespace NewsPortal.Context.Migrations
 
                     b.Property<string>("Phone_No");
 
-                    b.Property<int?>("UserRollID");
+                    b.Property<int>("UserRollID");
 
                     b.Property<string>("Username");
 
@@ -182,7 +182,8 @@ namespace NewsPortal.Context.Migrations
                 {
                     b.HasOne("NewsPortal.Common.Models.UserRoll", "UserRoll")
                         .WithMany("Users")
-                        .HasForeignKey("UserRollID");
+                        .HasForeignKey("UserRollID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,41 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <strong>Feed</strong>
+          <small>Form</small>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="company">Category</label>
+            <input type="text" class="form-control" [(ngModel)]="feed.CategoryID" id="Category" placeholder="Enter your company name">
+          </div>
+          <div class="form-group">
+            <label for="vat">Title</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="feed.Title" placeholder="PL1234567890">
+          </div>
+          <div class="form-group">
+            <label for="street">Description</label>
+            <angular-editor [(ngModel)]="feed.Description"  [config]="config"></angular-editor>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label for="postal-code">Is Headline</label>
+              <input type="checkbox" [checked]="feed.isHeadline" (change)="change($event)" [(ngModel)]="feed.isHeadline" class="form-control" id="postal-code" placeholder="Postal Code">
+            </div>
+            <div class="form-group col-sm-4">
+              <input type="submit" (click)="Submit()" class="form-control" id="postal-code" placeholder="Postal Code">
+            </div>
+          </div><!--/.row-->
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+  
+  <!--/.row-->
+
+</div>
+
+<div [innerHTML]="htmlContent">
+</div>

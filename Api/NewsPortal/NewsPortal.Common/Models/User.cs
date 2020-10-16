@@ -13,7 +13,7 @@ namespace NewsPortal.Common.Models
         public string Phone_No { get; set; }
         public string  Email { get; set; }
         public bool status { get; set; }
-        public int? UserRollID { get; set; }
+        public int UserRollID { get; set; }
         public virtual UserRoll UserRoll { get; set; }
 
 

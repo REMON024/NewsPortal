@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NewPortal.BLL.Interface;
 using NewsPortal.Common.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace NewsPortal.Controllers
 {
@@ -81,13 +83,13 @@ namespace NewsPortal.Controllers
         }
 
 
-
+        //[Authorize]
         [HttpGet("GetAllUser")]
         public async Task<ActionResult> GetAllUser()
         {
             try
             {
-                return Ok(await _userService.GetAllUser());
+                return new OkObjectResult(await _userService.GetAllUser());
             }
             catch (Exception ex)
             {

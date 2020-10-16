@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NewPortal.BLL.Interface;
+using NewsPortal.Common.Library.Encryption;
 using NewsPortal.Common.Models;
 using NewsPortal.Common.VM;
 using NewsPortal.Context;
@@ -20,19 +21,18 @@ namespace NewPortal.BLL.Service
             _db = db;
         }
 
-        public async Task<User> Login(Login login)
+        public async Task<LoginReturn> Login(Login login)
         {
-            string password = "";
-            var user = await _db.SystemUsers.Where(p => p.Username == login.UserName && p.Password == password && p.status==true).Select(c => new User()
+            string password =  EncryptionLibrary.EncryptText(login.Password);
+            var user = await _db.SystemUsers.Where(p => p.Username == login.UserName && p.Password == password && p.status==true).Select(c => new LoginReturn()
             {
                 Name=c.Name,
                 Email=c.Email,
-                ID=c.ID,
-                Phone_No=c.Phone_No,
-                status=c.status,
-                Username=c.Username,
-                UserRoll=c.UserRoll,
-                UserRollID=c.UserRollID
+                UserId=c.ID,
+                MobileNo=c.Phone_No,
+                UserName=c.Username,
+                UserRoleId=c.UserRollID,
+                Role=c.UserRoll.Name,
 
             }).FirstOrDefaultAsync();
 
